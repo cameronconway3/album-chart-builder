@@ -9,7 +9,7 @@ const ListAlbums = () => {
     const [albums, setAlbums] = useContext(AlbumContext);
 
     return (
-        <div>
+        <div className="row">
             {albums.map( (album, index) => 
                 <Album
                     album = {album.album}
