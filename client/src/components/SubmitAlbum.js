@@ -1,6 +1,6 @@
 import React, { useState, useContext } from 'react';
 import { AlbumContext } from './AlbumContext';
-import { useForm } from "react-hook-form";
+// import { useForm } from "react-hook-form";
 
 const SubmitAlbum = () => {
 
@@ -12,8 +12,9 @@ const SubmitAlbum = () => {
     // Use album context
     const [albums, setAlbums] = useContext(AlbumContext);
 
-    const { register, handleSubmit, watch, errors } = useForm();
+    // const { register, handleSubmit, watch, errors } = useForm();
 
+    // Update stateful values
     const updateAlbumName = e => {
         setAlbumName(e.target.value);
     }
@@ -21,7 +22,6 @@ const SubmitAlbum = () => {
         setArtistsName(e.target.value);
     }
     const updateNumOfSongs = e => {
-
         let value = e.target.value;
         setNumOfSongs(value);
         
@@ -33,7 +33,6 @@ const SubmitAlbum = () => {
             songFormField.innerHTML = "";
         }
     }
-
 
     const createSongFields = numOfSongs => {
         let songsHTML = '';
@@ -64,7 +63,28 @@ const SubmitAlbum = () => {
 
     const addAlbum = e => {
         e.preventDefault();
-        setAlbums(prevAlbums => [...prevAlbums, {album: albumName, artists: artistsName, numOfSongs: numOfSongs}])
+
+        let totalScore = 0;
+        const songRatings = document.querySelectorAll('.song-input')
+        for(let i = 0; i < songRatings.length; i++) {
+            totalScore += parseInt(songRatings[i].value)
+        }
+
+        let albumRatingRaw = totalScore/songRatings.length;
+        let albumRating = (Math.round(albumRatingRaw * 10) / 10).toFixed(1);
+
+        let newAlbum = {
+            album: albumName,
+            artists: artistsName,
+            numOfSongs: numOfSongs
+        }
+
+        setAlbums(prevAlbums => [...prevAlbums, newAlbum])
+        
+        const albumForm = document.querySelector('form');
+        albumForm.reset();
+        const songFormField = document.querySelector('.song-form');
+        songFormField.innerHTML = "";
     }
 
     return (
