@@ -12,10 +12,14 @@ code {
     monospace;
 }
 
-.row {
+/* .row {
   border: 1px solid red;
+}
+
+.col-md-12 {
+  border: 1px solid green;
 }
 
 .borderR {
   border: 1px solid blue;
-}
+} */
