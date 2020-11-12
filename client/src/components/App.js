@@ -3,22 +3,21 @@ import { AlbumProvider} from './AlbumContext';
 
 // App Components
 import Header from './Header';
-import SubmitAlbum from './SubmitAlbum';
-import ListAlbums from './ListAlbums'
 import SearchAlbums from './SearchAlbums';
+import DisplayAlbums from './DisplayAlbums';
 
 function App() {
 
     return (
         // All state from AlbumProvider is passed down throughout the application
         <AlbumProvider>
-            <div className="container border mt-4">
-                <Header />
+            <div className="container-fluid">
+                <div className="row">
+                    <Header />
+                </div>
                 <hr/>
                 <SearchAlbums />
-                {/* <SubmitAlbum /> */}
-                <hr/>
-                <ListAlbums />
+                <DisplayAlbums />
             </div>
         </AlbumProvider>
     );

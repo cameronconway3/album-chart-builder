@@ -67,7 +67,7 @@ const SearchAlbums = () => {
     const displayTopAlbums = data => {
         const albumItems = data.albums.items;
 
-        console.log(albumItems[0])
+        // console.log(albumItems[0])
 
         const albumsDisplay = albumItems.slice(0, 6).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
         
@@ -84,12 +84,17 @@ const SearchAlbums = () => {
                 const albumName = albumsToSelect[i].dataset.albumname;
                 const artistsName = albumsToSelect[i].dataset.artistsname;
                 const numOfSongs = albumsToSelect[i].dataset.numofsongs;
+                const albumImage = albumsToSelect[i].dataset.albumimage;
+                const albumRating = "!rated";
 
                 // Create new album object to update context
                 let newAlbum = {
+                    albumId: albumId,
                     album: albumName,
                     artists: artistsName,
                     numOfSongs: numOfSongs,
+                    albumImage: albumImage,
+                    albumRating: albumRating,
                 }
 
                 setAlbums(prevAlbums => [...prevAlbums, newAlbum])
@@ -100,28 +105,42 @@ const SearchAlbums = () => {
             })
         }
     }
-    
+
     const updateAlbumToSearch = e => {
         setAlbumName(e.target.value)
+        if(e.target.value.trim().length == 0) {
+            setSearchedAlbums('');
+            setAlbumName('');
+        }
     }
 
     return (
-        <div className="row">
-            <div className="col-md-12">
-                <form onSubmit={searchAlbum} className="search-album form-inline justify-content-center mb-3">
-                    <div className="form-group m-2">
-                        <label htmlFor="searchAlbum" className="mr-3">Search Album</label>
-                        <input type="text" className="form-control" id="searchAlbum" placeholder="Enter album to search..." value={albumName} onChange={updateAlbumToSearch} />
+        <div className="row justify-content-center">
+            <div className="col-md-12 border">
+                <div className="row">
+                    <div className="col-md-12">
+                        <form onSubmit={searchAlbum} className="search-album form-inline justify-content-center mb-3">
+
+                            <div className="form-group m-2 text-center">
+                                <input type="text" className="form-control" id="search-album" placeholder="Search album..." value={albumName} onChange={updateAlbumToSearch} />
+                            </div>
+                            <div className="text-center">
+                                <button className="btn btn-primary m-2" id="search-album-submit">Search</button>
+                            </div>
+
+                        </form>
                     </div>
-                    <button className="btn btn-primary m-2">Search</button>
-                </form>
-            </div>
-            <div className="col-md-12">
-                {
-                    loading
-                    ? <div className="row"><div className="col-md-12 text-center mt-3 mb-3"><p>Loading...</p></div></div>
-                    : <div className="row">{searchedAlbums}</div>
-                }
+                </div>
+
+                <div className="row">
+                    <div className="col-md-12">
+                        {
+                            loading
+                            ? <div className="row"><div className="col-md-12 text-center mt-3 mb-3"><p>Loading...</p></div></div>
+                            : <div className="row">{searchedAlbums}</div>
+                        }
+                    </div>
+                </div>
             </div>
         </div>
     )

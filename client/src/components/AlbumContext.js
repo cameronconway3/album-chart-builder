@@ -4,28 +4,7 @@ export const AlbumContext = createContext();
 
 export const AlbumProvider = props => {
 
-    const [albums, setAlbums] = useState([
-        {
-            album: 'Some Rap Songs',
-            artists: 'Earl Sweatshirt',
-            numOfSongs: 15
-        },
-        {
-            album: 'Disintegration',
-            artists: 'The Cure',
-            numOfSongs: 12
-        },
-        {
-            album: 'Piñata',
-            artists: 'Freddie Gibbs, Madlib',
-            numOfSongs: 17
-        },
-        {
-            album: '4:44',
-            artists: 'Jay-Z',
-            numOfSongs: 10
-        }
-    ]);
+    const [albums, setAlbums] = useState([]);
 
     return (
         <AlbumContext.Provider value={[albums, setAlbums]}>
