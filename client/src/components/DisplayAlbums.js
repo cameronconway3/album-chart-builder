@@ -3,16 +3,20 @@ import { AlbumContext } from './AlbumContext';
 
 // Album Component
 import Album from './Album';
+import Chart from './Chart';
 
 const DisplayAlbums = () => {
 
-    const [albums, setAlbums] = useContext(AlbumContext);
+    const {
+        albums, 
+        setAlbums,
+    } = useContext(AlbumContext);
 
     useEffect(() => {
         const myAlbums = document.querySelectorAll(".my-albums");
     
         for(let i = 0; i < myAlbums.length; i++) {
-            console.log(myAlbums[i])
+            // console.log(myAlbums[i])
             myAlbums[i].addEventListener("click", () => {
                 const albumId = myAlbums[i].dataset.id;
                 const albumName = myAlbums[i].dataset.albumname;
@@ -41,21 +45,22 @@ const DisplayAlbums = () => {
     }
 
     return (
-        // <div className="border border-dark">
-            <div className="row justify-content-center">
-                {albums.map( album => 
-                    <Album
-                        albumId = {album.albumId}
-                        album = {album.album}
-                        artists = {album.artists}
-                        numOfSongs = {album.numOfSongs}
-                        albumImage = {album.albumImage}
-                        albumRating = {album.albumRating}
-                        key = {album.albumId.toString()}
-                    />
-                )}
-            {/* </div> */}
+        <div className="row justify-content-center">
+            {/* {albums.map( album => 
+                <Album
+                    albumId = {album.albumId}
+                    album = {album.album}
+                    artists = {album.artists}
+                    numOfSongs = {album.numOfSongs}
+                    albumImage = {album.albumImage}
+                    albumRating = {album.albumRating}
+                    key = {album.albumId.toString()}
+                />
+            )} */}
+            
+            <Chart />
         </div>
+
     )
 }
 

@@ -10,7 +10,7 @@ const Album = props => {
                 data-numofsongs={props.numOfSongs} 
                 data-albumimage={props.albumImage}
                 data-albumrating={props.albumRating}
-                src={props.albumImage} class="card-img-top my-albums" alt={`${props.album} - ${props.artists}`} 
+                src={props.albumImage} className="card-img-top my-albums" alt={`${props.album} - ${props.artists}`} 
             />
         </div>
     );

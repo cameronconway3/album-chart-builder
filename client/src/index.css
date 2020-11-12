@@ -3,13 +3,14 @@ body {
     font-family: 'PT Sans', sans-serif;;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    /* background-color: #5fcf80; */
+    background-color: #F4F4F4;
 }
 
 code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
+/* General */
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0;
@@ -25,20 +26,33 @@ h1, h2, h3, h4, h5, h6 {
     color: black;
 }
 
+.header a {
+    color: #424242;
+    font-size: 16px;
+    text-transform: uppercase;
+}
+
 /* Search Album */
+.search-albums {
+
+}
 form #search-album {
-    border: 2px solid black;
-    height: 40px;
-    color: black;
+    border: none;
+    height: 30px;
     border-radius: 0;
-}
-form #search-album-submit {
-    border: 2px solid black;
-    background-color: white;
     color: black;
-    height: 40px;
-    border-radius: 0;
+    outline:none;
+    outline-width: 0;
+    box-shadow: none;
+    -moz-box-shadow: none;
+    -webkit-box-shadow: none;
+    text-align: center;
 }
+form #search-album::placeholder {
+    color: #424242;
+    text-align: center;
+}
+
 .choose-album {
     width: 110px;
     height: 110px;
@@ -48,4 +62,19 @@ form #search-album-submit {
 .my-albums {
     height: 150px;
     width: 150px;
+}
+
+/* Chart */
+.chart {
+   table-layout: fixed;
+}
+.chart td {
+    height: 150px;
+    width: 150px;
+    border: 5px solid #424242;
+}
+.chart td img {
+    height: 100%;
+    width: 100%;
+    transform: scale(1.02);
 }

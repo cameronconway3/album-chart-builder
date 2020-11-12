@@ -15,11 +15,11 @@ function App() {
                 <div className="row">
                     <Header />
                 </div>
-                <div class="row">
-                    <div class="col-md-3 border">
+                <div className="row">
+                    <div className="col-md-3 border border-dark">
                         <SearchAlbums />
                     </div>
-                    <div class="col-md-9 border">
+                    <div className="col-md-9 border border-dark">
                         <DisplayAlbums />
                     </div>
                 </div>

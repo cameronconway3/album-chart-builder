@@ -16,7 +16,10 @@ const SearchAlbums = () => {
     const [loading, setLoading] = useState('');
 
     // Use album context
-    const [albums, setAlbums] = useContext(AlbumContext);
+    const {
+        albums, 
+        setAlbums,
+    } = useContext(AlbumContext);
 
     const searchAlbum = e => {
         e.preventDefault();
@@ -133,15 +136,10 @@ const SearchAlbums = () => {
         <React.Fragment>
             <div className="row">
                 <div className="col-md-12">
-                    <form onSubmit={searchAlbum} className="search-album form-inline justify-content-center mb-3">
-
-                        <div className="form-group m-2 text-center">
-                            <input type="text" className="form-control" id="search-album" placeholder="Search album..." value={albumName} onChange={updateAlbumToSearch} />
+                    <form onSubmit={searchAlbum} className="search-album justify-content-center mb-3">
+                        <div className="form-group mt-3 text-center">
+                            <input type="text" className="form-control" id="search-album" placeholder="Search albums..." value={albumName} onChange={updateAlbumToSearch} />
                         </div>
-                        <div className="text-center">
-                            <button className="btn btn-primary m-2" id="search-album-submit">Search</button>
-                        </div>
-
                     </form>
                 </div>
             </div>
