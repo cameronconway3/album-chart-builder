@@ -15,9 +15,14 @@ function App() {
                 <div className="row">
                     <Header />
                 </div>
-                <hr/>
-                <SearchAlbums />
-                <DisplayAlbums />
+                <div class="row">
+                    <div class="col-md-3 border">
+                        <SearchAlbums />
+                    </div>
+                    <div class="col-md-9 border">
+                        <DisplayAlbums />
+                    </div>
+                </div>
             </div>
         </AlbumProvider>
     );

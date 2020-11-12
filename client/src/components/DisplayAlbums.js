@@ -41,27 +41,20 @@ const DisplayAlbums = () => {
     }
 
     return (
-        <div className="row justify-content-center">
-            <div className="col-md-12 border">
-                <div className="text-center border border-dark">
-                    <h1>My list</h1>
-                </div>
-                <div className="border border-dark">
-                    <div className="row">
-                        {albums.map( album => 
-                            <Album
-                                albumId = {album.albumId}
-                                album = {album.album}
-                                artists = {album.artists}
-                                numOfSongs = {album.numOfSongs}
-                                albumImage = {album.albumImage}
-                                albumRating = {album.albumRating}
-                                key = {album.albumId.toString()}
-                            />
-                        )}
-                    </div>
-                </div>
-            </div>
+        // <div className="border border-dark">
+            <div className="row justify-content-center">
+                {albums.map( album => 
+                    <Album
+                        albumId = {album.albumId}
+                        album = {album.album}
+                        artists = {album.artists}
+                        numOfSongs = {album.numOfSongs}
+                        albumImage = {album.albumImage}
+                        albumRating = {album.albumRating}
+                        key = {album.albumId.toString()}
+                    />
+                )}
+            {/* </div> */}
         </div>
     )
 }

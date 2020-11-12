@@ -2,7 +2,7 @@ import React from 'react';
 
 const Album = props => {
     return (
-        <div className="col-md-2 text-center">
+        <div className="p-1 displayed-album">
             <img 
                 data-id={props.albumId} 
                 data-albumname={props.album} 

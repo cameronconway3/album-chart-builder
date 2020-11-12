@@ -69,7 +69,7 @@ const SearchAlbums = () => {
 
         // console.log(albumItems[0])
 
-        const albumsDisplay = albumItems.slice(0, 6).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
+        const albumsDisplay = albumItems.slice(0, 12).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
         
         setSearchedAlbums(albumsDisplay)
 
@@ -103,6 +103,21 @@ const SearchAlbums = () => {
                 setSearchedAlbums('');
                 setAlbumName('');
             })
+            
+            albumsToSelect[i].addEventListener("mouseenter", () => {
+                albumsToSelect.forEach(element => {
+                    if(element !== albumsToSelect[i]) {
+                        element.style.opacity = "0.5";
+                    }
+                });
+            })
+
+            albumsToSelect[i].addEventListener("mouseleave", () => {
+                albumsToSelect.forEach(element => {
+                    element.style.opacity = "1";
+                });
+            })
+
         }
     }
 
@@ -115,34 +130,32 @@ const SearchAlbums = () => {
     }
 
     return (
-        <div className="row justify-content-center">
-            <div className="col-md-12 border">
-                <div className="row">
-                    <div className="col-md-12">
-                        <form onSubmit={searchAlbum} className="search-album form-inline justify-content-center mb-3">
+        <React.Fragment>
+            <div className="row">
+                <div className="col-md-12">
+                    <form onSubmit={searchAlbum} className="search-album form-inline justify-content-center mb-3">
 
-                            <div className="form-group m-2 text-center">
-                                <input type="text" className="form-control" id="search-album" placeholder="Search album..." value={albumName} onChange={updateAlbumToSearch} />
-                            </div>
-                            <div className="text-center">
-                                <button className="btn btn-primary m-2" id="search-album-submit">Search</button>
-                            </div>
+                        <div className="form-group m-2 text-center">
+                            <input type="text" className="form-control" id="search-album" placeholder="Search album..." value={albumName} onChange={updateAlbumToSearch} />
+                        </div>
+                        <div className="text-center">
+                            <button className="btn btn-primary m-2" id="search-album-submit">Search</button>
+                        </div>
 
-                        </form>
-                    </div>
-                </div>
-
-                <div className="row">
-                    <div className="col-md-12">
-                        {
-                            loading
-                            ? <div className="row"><div className="col-md-12 text-center mt-3 mb-3"><p>Loading...</p></div></div>
-                            : <div className="row">{searchedAlbums}</div>
-                        }
-                    </div>
+                    </form>
                 </div>
             </div>
-        </div>
+
+            <div className="row">
+                <div className="col-md-12">
+                    {
+                        loading
+                        ? <div className="row"><div className="col-md-12 text-center mt-3 mb-3"><p>Loading...</p></div></div>
+                        : <div className="row justify-content-center">{searchedAlbums}</div>
+                    }
+                </div>
+            </div>
+        </React.Fragment>
     )
 }
 

@@ -1,27 +1,18 @@
 body {
-  margin: 0;
-  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif; */
-  font-family: 'PT Sans', sans-serif;;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /* background-color: #5fcf80; */
+    margin: 0;
+    font-family: 'PT Sans', sans-serif;;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* background-color: #5fcf80; */
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New', monospace;
 }
 
 h1, h2, h3, h4, h5, h6 {
     margin-top: 0;
     margin-bottom: 0;
-}
-
-/* General */
-hr {
-    /* border: 1px solid #E8E8E8; */
 }
 
 /* Header */
@@ -36,14 +27,25 @@ hr {
 
 /* Search Album */
 form #search-album {
-    border: 2px solid #E8E8E8;
+    border: 2px solid black;
+    height: 40px;
+    color: black;
+    border-radius: 0;
 }
 form #search-album-submit {
-    
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    height: 40px;
+    border-radius: 0;
+}
+.choose-album {
+    width: 110px;
+    height: 110px;
 }
 
 /* My List */
 .my-albums {
-    height: 200px;
-    width: 200px;
+    height: 150px;
+    width: 150px;
 }
