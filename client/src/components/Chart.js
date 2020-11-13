@@ -75,7 +75,9 @@ const Chart = () => {
     }
     
     return (
-        <table className="chart border"></table>
+        <div className="row">
+            <table className="chart border"></table>
+        </div>
     )
 }
 

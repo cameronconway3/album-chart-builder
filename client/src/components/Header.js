@@ -52,8 +52,8 @@ const Header = () => {
                 </ul>
             </div>
 
-            <div class="col-md-12 text-center">
-                <button class="btn download-chart mb-2">Download</button>
+            <div className="col-md-12 text-center">
+                <button className="btn download-chart mb-2">Download</button>
             </div>
         </React.Fragment>
 

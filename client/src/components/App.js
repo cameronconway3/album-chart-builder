@@ -2,9 +2,8 @@ import React, { useEffect } from 'react';
 import { AlbumProvider} from './AlbumContext';
 
 // App Components
-import Header from './Header';
+import Chart from './Chart';
 import SearchAlbums from './SearchAlbums';
-import DisplayAlbums from './DisplayAlbums';
 
 function App() {
 
@@ -17,7 +16,7 @@ function App() {
                         <SearchAlbums />
                     </div>
                     <div className="col-md-9">
-                        <DisplayAlbums />
+                        <Chart />
                     </div>
                 </div>
             </div>
