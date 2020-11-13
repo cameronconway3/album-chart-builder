@@ -5,16 +5,13 @@ export const AlbumContext = createContext();
 export const AlbumProvider = props => {
 
     const [albums, setAlbums] = useState([]);
-    const [albumsInChart, setAlbumsInChart] = useState(20)
-    const [albumsPerRow, setAlbumsPerRow] = useState(8)
+    const [chartSize, setChartSize] = useState('3x3');
 
     const value = {
         albums,
         setAlbums,
-        albumsInChart,
-        setAlbumsInChart,
-        albumsPerRow,
-        setAlbumsPerRow,
+        chartSize,
+        setChartSize,
     }
 
 

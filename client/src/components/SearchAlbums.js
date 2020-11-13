@@ -6,6 +6,8 @@ import SearchedAlbum from './SearchedAlbum';
 import axios from 'axios';
 import qs from 'qs';
 
+import Header from './Header';
+
 require('dotenv').config();
 
 const SearchAlbums = () => {
@@ -72,7 +74,7 @@ const SearchAlbums = () => {
 
         // console.log(albumItems[0])
 
-        const albumsDisplay = albumItems.slice(0, 12).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
+        const albumsDisplay = albumItems.slice(0, 6).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
         
         setSearchedAlbums(albumsDisplay)
 
@@ -134,6 +136,9 @@ const SearchAlbums = () => {
 
     return (
         <React.Fragment>
+            <div className="row">
+                <Header />
+            </div>
             <div className="row">
                 <div className="col-md-12">
                     <form onSubmit={searchAlbum} className="search-album justify-content-center mb-3">
