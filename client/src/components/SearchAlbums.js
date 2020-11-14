@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from 'react';
+import React, { useState, useContext } from 'react';
 import { AlbumContext } from './AlbumContext';
 
 import SearchedAlbum from './SearchedAlbum';
@@ -19,8 +19,7 @@ const SearchAlbums = () => {
 
     // Use album context
     const {
-        albums, 
-        setAlbums,
+        setAlbums
     } = useContext(AlbumContext);
 
     const searchAlbum = e => {

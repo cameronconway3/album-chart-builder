@@ -14,7 +14,6 @@ export const AlbumProvider = props => {
         setChartSize,
     }
 
-
     return (
         <AlbumContext.Provider value={value}>
             {/* Pass down to all components where the Provider is defined */}

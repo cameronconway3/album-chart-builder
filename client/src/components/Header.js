@@ -6,8 +6,7 @@ import domtoimage from 'dom-to-image';
 const Header = () => {
 
     const {
-        chartSize, 
-        setChartSize,
+        setChartSize
     } = useContext(AlbumContext);
 
     useEffect(() => {
@@ -26,7 +25,7 @@ const Header = () => {
             domtoimage.toJpeg(chart, { quality: 0.95 })
                 .then( dataUrl => {
                     const link = document.createElement('a');
-                    link.download = 'my-album.jpeg';
+                    link.download = 'album-chart.jpeg';
                     link.href = dataUrl;
                     link.click();
                 });
