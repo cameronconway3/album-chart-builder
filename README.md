@@ -1,5 +1,5 @@
 # Album Chart Builder
- Build a collection of your favourite albums using the Spotify API, ability to download created album as a JPEG 
+ App to build and download a collection of albums using the Spotify API  
 
 Future work
 - Store album data in a cookie
