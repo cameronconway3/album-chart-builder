@@ -1,4 +1,4 @@
-# fav-album-app
+# Album Chart Builder
  Build a collection of your favourite albums using the Spotify API, ability to download created album as a JPEG 
 
 Future work
