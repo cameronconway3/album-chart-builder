@@ -10,6 +10,7 @@ const Header = () => {
     } = useContext(AlbumContext);
 
     useEffect(() => {
+        // Update the chart size with the related option
         const chartChoices = document.querySelectorAll(".chart-size");
         for(let i = 0; i < chartChoices.length; i++) {
             chartChoices[i].addEventListener("click", () => {
@@ -17,6 +18,7 @@ const Header = () => {
             })
         }
 
+        // Add ability to download the chart as a JPEG using 'domtoimage' package
         const downloadAlbum = document.querySelector(".download-chart");
         
         downloadAlbum.addEventListener("click", () => {

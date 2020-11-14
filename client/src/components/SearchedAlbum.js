@@ -2,6 +2,7 @@ import React from 'react';
 
 const SearchedAlbum = props => {
 
+    // Update the image with data related to the specific album
     return (
         <div className="p-1 searched-album">
             <img className="choose-album" 

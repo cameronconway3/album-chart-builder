@@ -18,6 +18,7 @@ const Chart = () => {
 
     useEffect(() => {
         // Different Chart Sizes 
+
         //3x3
         if(chartSize === "3x3") {
             createChart(3, 3);
@@ -38,10 +39,11 @@ const Chart = () => {
             createChart(6, 6);
         }
 
-
+        // Get all the cells in the chart
         const myAlbums = document.querySelectorAll("td.album-space");
         for(let i = 0; i < myAlbums.length; i++) {
 
+            // When the users mouse enters the specific cell, add an a remove icon overlay and change the opacity of the image
             myAlbums[i].addEventListener("mouseenter", () => {
                 
                 const cross = `
@@ -54,6 +56,7 @@ const Chart = () => {
                 myAlbums[i].children[0].children[0].style.opacity = "0.5"
             })
 
+            // If the user clicks on the album remove it from the albums state array using 'filter' then update the albums state with the new filtered array
             myAlbums[i].addEventListener("click", () => {
 
                 for(let j = 0; j < albums.length; j++) {
@@ -65,20 +68,21 @@ const Chart = () => {
 
             })
 
+            // When the users mouse leaves the specific cell add full opacity back and remove the remove icon
             myAlbums[i].addEventListener("mouseleave", () => {
                 myAlbums[i].children[0].children[0].style.opacity = "1"
                 myAlbums[i].children[0].removeChild(myAlbums[i].children[0].children[1])
             })
-
-
         }
 
     })
 
+    // Function to create the chart, take rows and columns as a paremeter (currently only albums to choose are same row and height length, but this may be changed in the future)
     const createChart = (rows, columns) => {
         const chartPos = document.querySelector(".chart");
         chartPos.innerHTML = "";
 
+        // Create the tbody and insert the rows
         let tableBody = document.createElement("tbody")
         for(let i = 0; i < rows; i++) {
             tableBody.insertRow();
@@ -86,9 +90,11 @@ const Chart = () => {
 
         let cellNumber = 0;
 
+        // Loop over each row in tableBody
         for(let i = 0; i < tableBody.children.length; i++) {
 
             for(let j = 0; j < columns; j++) {
+                // If the albums state contains an album at that cell number update the cell with the album
                 if(albums[cellNumber]) {
                     const newCell = document.createElement("td");
                     newCell.setAttribute("class", "album-space")
@@ -96,6 +102,7 @@ const Chart = () => {
                             <DisplayedAlbum data={albums[cellNumber]}/>, 
                         newCell);
                     tableBody.children[i].appendChild(newCell);
+                // If there is no album corresponding to the cellNumber create an empty cell
                 } else {
                     const newCell = document.createElement("td");
                     // newCell.innerHTML = `${cellNumber}`;
@@ -106,6 +113,7 @@ const Chart = () => {
             }
         }
 
+        // Insert the table body into the rendered table element
         chartPos.insertAdjacentElement("beforeend", tableBody);
 
     }

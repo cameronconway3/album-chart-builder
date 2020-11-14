@@ -25,8 +25,10 @@ const SearchAlbums = () => {
     const searchAlbum = e => {
         e.preventDefault();
         
+        // If the search input has a value in it
         if(albumName.trim().length !== 0) {
         
+            // Update the loading state to true until the end of the function when the data from the Spotify API has returned
             setLoading(true);
 
             // Variables needed to get the access token for the Spotify API
@@ -47,6 +49,7 @@ const SearchAlbums = () => {
                 grant_type: 'client_credentials',
             };
             
+            // Get the access token
             axios.post('https://accounts.spotify.com/api/token', qs.stringify(data), headers)
                 .then(data => {
     
@@ -56,6 +59,7 @@ const SearchAlbums = () => {
                             'Authorization': 'Bearer ' + data.data.access_token
                         }
                     }
+                    // Get the data relating to the value in the albumName state
                     axios.get(`https://api.spotify.com/v1/search?q=album:${albumName}&type=album`, headers)
                         .then(response => {
                             displayTopAlbums(response.data);
@@ -68,17 +72,18 @@ const SearchAlbums = () => {
         }
     }
 
+    // Display albums returned from the search
     const displayTopAlbums = data => {
         const albumItems = data.albums.items;
 
-        // console.log(albumItems[0])
+        // Limit the amount of albums displayed from the search using 'slice'
+        const albumsDisplay = albumItems.slice(0, 6).map( album => <SearchedAlbum data={album} key={album.id}/> )
 
-        const albumsDisplay = albumItems.slice(0, 6).map((album, index) => <SearchedAlbum data={album} key={album.id}/>)
-        
         setSearchedAlbums(albumsDisplay)
 
     }
 
+    // Select specific album returned from the search
     const selectAlbum = () => {
         const albumsToSelect = document.querySelectorAll(".choose-album");
         for(let i = 0; i < albumsToSelect.length; i++) {
@@ -101,6 +106,7 @@ const SearchAlbums = () => {
                     albumRating: albumRating,
                 }
 
+                // Update albums state with new album, use the previous albums state and add new album (dont simply update the state with returned album)
                 setAlbums(prevAlbums => [...prevAlbums, newAlbum])
                 
                 document.querySelector('.search-album').reset();
@@ -108,6 +114,7 @@ const SearchAlbums = () => {
                 setAlbumName('');
             })
             
+            // When mouse enters the specific returned album set all other results' opacity to 0.5 to hightlight user choice
             albumsToSelect[i].addEventListener("mouseenter", () => {
                 albumsToSelect.forEach(element => {
                     if(element !== albumsToSelect[i]) {
@@ -116,15 +123,16 @@ const SearchAlbums = () => {
                 });
             })
 
+            // When users mouse leaves the album set all the returned albums opacity back to 1
             albumsToSelect[i].addEventListener("mouseleave", () => {
                 albumsToSelect.forEach(element => {
                     element.style.opacity = "1";
                 });
             })
-
         }
     }
 
+    // Update the albumName state when something is entered in the search bar
     const updateAlbumToSearch = e => {
         setAlbumName(e.target.value)
         if(e.target.value.trim().length == 0) {
@@ -150,6 +158,7 @@ const SearchAlbums = () => {
 
             <div className="row">
                 <div className="col-md-12">
+                    {/* When making call to Spotify API, if loading is true display 'Loading...', else display the results of the search */}
                     {
                         loading
                         ? <div className="row"><div className="col-md-12 text-center mt-3 mb-3"><p>Loading...</p></div></div>

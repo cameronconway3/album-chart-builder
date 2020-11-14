@@ -5,6 +5,7 @@ const DisplayedAlbum = props => {
     return (
         <div className="album-container">
             <img 
+                // Create data attributes containing specific information relating to the album (collected during the Spotify API call)
                 data-id={props.data.albumId} 
                 data-albumname={props.data.album} 
                 data-artistsname={props.data.artists} 
